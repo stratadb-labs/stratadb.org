@@ -3,8 +3,6 @@ title: "Branch Primitive - Architecture Reference"
 sidebar_position: 4
 ---
 
-# Branch Primitive - Architecture Reference
-
 ## Overview
 
 The Branch primitive manages isolated data namespaces. Each branch is an independent scope containing its own KV, Event, State, JSON, and Vector data. Branches are tracked via a `BranchIndex` that stores metadata in a global namespace outside any branch.

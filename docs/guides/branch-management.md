@@ -3,9 +3,7 @@ title: "Branch Management Guide"
 sidebar_position: 7
 ---
 
-# Branch Management Guide
-
-This guide covers the complete API for creating, switching, listing, and deleting branches. For the conceptual overview, see [Concepts: Branches](../concepts/branches).
+This guide covers the complete API for creating, switching, listing, and deleting branches. For the conceptual overview, see [Concepts: Branches](../concepts/branches.md).
 
 ## Opening and Default Branch
 
@@ -146,21 +144,45 @@ assert!(db.branch_exists("my-branch-id")?);
 db.branch_delete("my-branch-id")?;
 ```
 
-## Future Features
+## Fork a Branch
 
-These operations are planned but not yet implemented:
-
-- **`fork_branch(destination)`** — Copy all data from the current branch to a new branch
-- **`branches().diff(branch1, branch2)`** — Compare two branches and return their differences
-
-Both currently return `NotImplemented` errors:
+Fork creates an exact copy of a branch, including all data across all primitives and spaces:
 
 ```rust
-let result = db.fork_branch("copy");
-assert!(matches!(result, Err(Error::NotImplemented { .. })));
+db.fork_branch("experiment-1")?;
+
+// Or via the power API:
+let info = db.branches().fork("source-branch", "dest-branch")?;
+println!("Copied {} keys across {} spaces", info.keys_copied, info.spaces_copied);
+```
+
+## Diff Branches
+
+Compare two branches to see what's different:
+
+```rust
+let diff = db.branches().diff("branch-a", "branch-b")?;
+for space in &diff.spaces {
+    println!("{}: {} added, {} removed, {} modified",
+        space.space, space.added.len(), space.removed.len(), space.modified.len());
+}
+```
+
+## Merge Branches
+
+Merge data from one branch into another:
+
+```rust
+use strata_executor::MergeStrategy;
+
+// Last-writer-wins: source values overwrite target on conflict
+let info = db.branches().merge("source", "target", MergeStrategy::LastWriterWins)?;
+
+// Strict: fails if any conflicts exist
+let info = db.branches().merge("source", "target", MergeStrategy::Strict)?;
 ```
 
 ## Next
 
-- [Sessions and Transactions](sessions-and-transactions) — multi-operation atomicity
-- [Branch Bundles](branch-bundles) — exporting and importing branches
+- [Sessions and Transactions](sessions-and-transactions.md) — multi-operation atomicity
+- [Branch Bundles](branch-bundles.md) — exporting and importing branches

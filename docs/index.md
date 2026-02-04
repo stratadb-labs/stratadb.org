@@ -3,52 +3,50 @@ title: "StrataDB Documentation"
 sidebar_position: 0
 ---
 
-# StrataDB Documentation
-
 Welcome to the StrataDB documentation. StrataDB is an embedded database for AI agents, providing six data primitives with branch-based isolation, OCC transactions, and three durability modes.
 
 ## Quick Links
 
 | I want to... | Go to |
 |---|---|
-| Install StrataDB and run my first example | [Getting Started](getting-started/installation) |
-| Understand what branches are and how data isolation works | [Concepts: Branches](concepts/branches) |
-| Organize data within branches using spaces | [Guide: Spaces](guides/spaces) |
-| Learn how to use a specific primitive | [Guides](guides/) |
-| See every method at a glance | [API Quick Reference](reference/api-quick-reference) |
-| Build a real-world pattern (agent state, RAG, etc.) | [Cookbook](cookbook/) |
+| Install StrataDB and run my first example | [Getting Started](getting-started/installation.md) |
+| Understand what branches are and how data isolation works | [Concepts: Branches](concepts/branches.md) |
+| Organize data within branches using spaces | [Guide: Spaces](guides/spaces.md) |
+| Learn how to use a specific primitive | [Guides](guides/index.md) |
+| See every method at a glance | [API Quick Reference](reference/api-quick-reference.md) |
+| Build a real-world pattern (agent state, RAG, etc.) | [Cookbook](cookbook/index.md) |
 | Understand the architecture | [Architecture Overview](/architecture/) |
-| Contribute to StrataDB | [Contributing](https://github.com/stratadb/strata-core/blob/main/CONTRIBUTING.md) |
+| Contribute to StrataDB | [Contributing](https://github.com/strata-systems/strata-core/blob/main/CONTRIBUTING.md) |
 
 ## For Users
 
-### [Getting Started](getting-started/installation)
+### [Getting Started](getting-started/installation.md)
 
 Installation, feature flags, and a step-by-step tutorial that covers all six primitives.
 
-### [Concepts](concepts/)
+### [Concepts](concepts/index.md)
 
-Core ideas you need to understand: [branches](concepts/branches), [primitives](concepts/primitives), [value types](concepts/value-types), [transactions](concepts/transactions), and [durability](concepts/durability).
+Core ideas you need to understand: [branches](concepts/branches.md), [primitives](concepts/primitives.md), [value types](concepts/value-types.md), [transactions](concepts/transactions.md), and [durability](concepts/durability.md).
 
-### [Guides](guides/)
+### [Guides](guides/index.md)
 
-Per-primitive walkthroughs: [KV Store](guides/kv-store), [Event Log](guides/event-log), [State Cell](guides/state-cell), [JSON Store](guides/json-store), [Vector Store](guides/vector-store), [Branch Management](guides/branch-management). Plus cross-cutting guides on [spaces](guides/spaces), [observability](guides/observability), [search](guides/search), [sessions and transactions](guides/sessions-and-transactions), [branch bundles](guides/branch-bundles), [configuration](guides/database-configuration), and [error handling](guides/error-handling).
+Per-primitive walkthroughs: [KV Store](guides/kv-store.md), [Event Log](guides/event-log.md), [State Cell](guides/state-cell.md), [JSON Store](guides/json-store.md), [Vector Store](guides/vector-store.md), [Branch Management](guides/branch-management.md). Plus cross-cutting guides on [spaces](guides/spaces.md), [observability](guides/observability.md), [search](guides/search.md), [sessions and transactions](guides/sessions-and-transactions.md), [branch bundles](guides/branch-bundles.md), [configuration](guides/database-configuration.md), and [error handling](guides/error-handling.md).
 
-### [Cookbook](cookbook/)
+### [Cookbook](cookbook/index.md)
 
-Recipes for real-world patterns: [agent state management](cookbook/agent-state-management), [multi-agent coordination](cookbook/multi-agent-coordination), [RAG with vectors](cookbook/rag-with-vectors), [deterministic replay](cookbook/deterministic-replay), and [A/B testing with branches](cookbook/ab-testing-with-branches).
+Recipes for real-world patterns: [agent state management](cookbook/agent-state-management.md), [multi-agent coordination](cookbook/multi-agent-coordination.md), [RAG with vectors](cookbook/rag-with-vectors.md), [deterministic replay](cookbook/deterministic-replay.md), and [A/B testing with branches](cookbook/ab-testing-with-branches.md).
 
-### [Reference](reference/)
+### [Reference](reference/index.md)
 
-Complete specifications: [API quick reference](reference/api-quick-reference), [value types](reference/value-type-reference), [errors](reference/error-reference), [commands](reference/command-reference), and [configuration](reference/configuration-reference).
+Complete specifications: [API quick reference](reference/api-quick-reference.md), [value types](reference/value-type-reference.md), [errors](reference/error-reference.md), [commands](reference/command-reference.md), and [configuration](reference/configuration-reference.md).
 
-### [Troubleshooting](troubleshooting) and [FAQ](faq)
+### [Troubleshooting](troubleshooting.md) and [FAQ](faq.md)
 
 Common issues, error messages, and frequently asked questions.
 
 ## For Contributors
 
-### [Contributing](https://github.com/stratadb/strata-core/blob/main/CONTRIBUTING.md)
+### [Contributing](https://github.com/strata-systems/strata-core/blob/main/CONTRIBUTING.md)
 
 Development setup, workspace structure, running tests, code style, and pull request process.
 
@@ -56,6 +54,6 @@ Development setup, workspace structure, running tests, code style, and pull requ
 
 How StrataDB works internally: [crate structure](/architecture/crate-structure), [storage engine](/architecture/storage-engine), [durability and recovery](/architecture/durability-and-recovery), and [concurrency model](/architecture/concurrency-model).
 
-### [Changelog](https://github.com/stratadb/strata-core/blob/main/CHANGELOG.md)
+### [Changelog](https://github.com/strata-systems/strata-core/blob/main/CHANGELOG.md)
 
 Release history and notable changes.

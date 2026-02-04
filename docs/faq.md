@@ -3,8 +3,6 @@ title: "Frequently Asked Questions"
 sidebar_position: 99
 ---
 
-# Frequently Asked Questions
-
 ## General
 
 ### What is StrataDB?
@@ -27,15 +25,15 @@ StrataDB is production-ready for embedded (in-process) use. It has comprehensive
 
 ### What are branches?
 
-Branches are isolated data namespaces, similar to git branches. All data in StrataDB lives in a branch. Data written in one branch is invisible from another. See [Concepts: Branches](concepts/branches).
+Branches are isolated data namespaces, similar to git branches. All data in StrataDB lives in a branch. Data written in one branch is invisible from another. See [Concepts: Branches](concepts/branches.md).
 
 ### How many primitives are there?
 
-Six: KV Store, Event Log, State Cell, JSON Store, Vector Store, and Branch. See [Concepts: Primitives](concepts/primitives).
+Six: KV Store, Event Log, State Cell, JSON Store, Vector Store, and Branch. See [Concepts: Primitives](concepts/primitives.md).
 
 ### What value types are supported?
 
-Eight: Null, Bool, Int (i64), Float (f64), String, Bytes, Array, and Object. There are no implicit type coercions. See [Concepts: Value Types](concepts/value-types).
+Eight: Null, Bool, Int (i64), Float (f64), String, Bytes, Array, and Object. There are no implicit type coercions. See [Concepts: Value Types](concepts/value-types.md).
 
 ### Can I store arbitrary Rust structs?
 
@@ -81,7 +79,7 @@ Uncommitted transactions are automatically discarded during recovery. Only commi
 - **Production:** Buffered (default) — good balance of speed and safety
 - **Critical data:** Strict — zero data loss, but slower
 
-See [Concepts: Durability](concepts/durability).
+See [Concepts: Durability](concepts/durability.md).
 
 ### Can I change the durability mode after opening?
 
@@ -109,7 +107,7 @@ Yes. StrataDB is a library that any Rust application can use. Agent frameworks c
 
 ### How do I contribute?
 
-See [Contributing](https://github.com/stratadb/strata-core/blob/main/CONTRIBUTING.md) for development setup, running tests, and PR guidelines.
+See [Contributing](https://github.com/strata-systems/strata-core/blob/main/CONTRIBUTING.md) for development setup, running tests, and PR guidelines.
 
 ### Where do I report bugs?
 

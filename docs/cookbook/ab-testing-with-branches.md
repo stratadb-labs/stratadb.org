@@ -3,8 +3,6 @@ title: "A/B Testing with Branches"
 sidebar_position: 6
 ---
 
-# A/B Testing with Branches
-
 This recipe shows how to use branches to compare different agent strategies side by side.
 
 ## Pattern
@@ -141,6 +139,6 @@ fn multi_variant_test(db: &mut Strata, variants: &[(&str, f64)]) -> stratadb::Re
 
 ## See Also
 
-- [Branches Concept](../concepts/branches) — data isolation model
-- [Branch Management Guide](../guides/branch-management) — creating and managing branches
-- [Agent State Management](agent-state-management) — full session pattern
+- [Branches Concept](../concepts/branches.md) — data isolation model
+- [Branch Management Guide](../guides/branch-management.md) — creating and managing branches
+- [Agent State Management](agent-state-management.md) — full session pattern

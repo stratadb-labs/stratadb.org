@@ -3,8 +3,6 @@ title: "KV Primitive - Architecture Reference"
 sidebar_position: 14
 ---
 
-# KV Primitive - Architecture Reference
-
 ## Overview
 
 The KV (Key-Value) primitive provides a simple associative store where string keys map to typed values. It supports put, get, list, and delete operations with full MVCC versioning.

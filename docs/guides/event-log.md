@@ -3,8 +3,6 @@ title: "Event Log Guide"
 sidebar_position: 3
 ---
 
-# Event Log Guide
-
 The Event Log is an append-only sequence of typed events. Events are immutable once written — you cannot update or delete individual events. This makes it ideal for audit trails, tool call history, and decision logs.
 
 ## API Overview
@@ -12,8 +10,8 @@ The Event Log is an append-only sequence of typed events. Events are immutable o
 | Method | Signature | Returns |
 |--------|-----------|---------|
 | `event_append` | `(event_type: &str, payload: Value) -> Result<u64>` | Sequence number |
-| `event_read` | `(sequence: u64) -> Result<Option<VersionedValue>>` | Event at sequence |
-| `event_read_by_type` | `(event_type: &str) -> Result<Vec<VersionedValue>>` | All events of type |
+| `event_get` | `(sequence: u64) -> Result<Option<VersionedValue>>` | Event at sequence |
+| `event_get_by_type` | `(event_type: &str) -> Result<Vec<VersionedValue>>` | All events of type |
 | `event_len` | `() -> Result<u64>` | Total event count |
 
 ## Appending Events
@@ -62,7 +60,7 @@ let db = Strata::cache()?;
 
 let seq = db.event_append("log", serde_json::json!({"msg": "hello"}).into())?;
 
-let event = db.event_read(seq)?;
+let event = db.event_get(seq)?;
 if let Some(versioned) = event {
     println!("Payload: {:?}", versioned.value);
     println!("Version: {}", versioned.version);
@@ -80,10 +78,10 @@ db.event_append("tool_call", serde_json::json!({"tool": "search"}).into())?;
 db.event_append("decision", serde_json::json!({"choice": "A"}).into())?;
 db.event_append("tool_call", serde_json::json!({"tool": "calculator"}).into())?;
 
-let tool_calls = db.event_read_by_type("tool_call")?;
+let tool_calls = db.event_get_by_type("tool_call")?;
 assert_eq!(tool_calls.len(), 2);
 
-let decisions = db.event_read_by_type("decision")?;
+let decisions = db.event_get_by_type("decision")?;
 assert_eq!(decisions.len(), 1);
 ```
 
@@ -155,15 +153,15 @@ db.set_space("other")?;
 assert_eq!(db.event_len()?, 0); // separate event stream per space
 ```
 
-See [Spaces](spaces) for the full guide.
+See [Spaces](spaces.md) for the full guide.
 
 ## Transactions
 
 Event append operations participate in transactions. Within a session, appended events are only visible after commit.
 
-See [Sessions and Transactions](sessions-and-transactions) for details.
+See [Sessions and Transactions](sessions-and-transactions.md) for details.
 
 ## Next
 
-- [State Cell](state-cell) — mutable state with CAS
-- [Cookbook: Agent State Management](../cookbook/agent-state-management) — combining events with other primitives
+- [State Cell](state-cell.md) — mutable state with CAS
+- [Cookbook: Agent State Management](../cookbook/agent-state-management.md) — combining events with other primitives

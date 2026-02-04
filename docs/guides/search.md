@@ -3,8 +3,6 @@ title: "Search Guide"
 sidebar_position: 11
 ---
 
-# Search Guide
-
 StrataDB provides hybrid search across primitives, combining BM25 keyword scoring with Reciprocal Rank Fusion (RRF) for result merging.
 
 ## Overview
@@ -84,5 +82,5 @@ Search results are scoped to the current branch. Data from other branches is not
 
 ## Next
 
-- [Database Configuration](database-configuration) — opening methods and settings
+- [Database Configuration](database-configuration.md) — opening methods and settings
 - [Architecture: Intelligence](/architecture/) — search internals

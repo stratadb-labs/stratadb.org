@@ -3,8 +3,6 @@ title: "Observability Guide"
 sidebar_position: 13
 ---
 
-# Observability Guide
-
 StrataDB uses the [`tracing`](https://docs.rs/tracing) crate for structured logging. Instrumentation is built into the engine but produces zero overhead unless you wire up a subscriber in your application.
 
 ## How It Works
@@ -124,5 +122,5 @@ When no subscriber is configured, `tracing` macros compile to no-ops. There is n
 
 ## Next
 
-- [Database Configuration](database-configuration) — durability modes and opening methods
-- [Error Handling](error-handling) — error categories and patterns
+- [Database Configuration](database-configuration.md) — durability modes and opening methods
+- [Error Handling](error-handling.md) — error categories and patterns

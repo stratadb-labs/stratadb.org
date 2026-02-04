@@ -3,8 +3,6 @@ title: "Storage Engine"
 sidebar_position: 18
 ---
 
-# Storage Engine
-
 The storage engine is the lowest data layer in StrataDB. It provides a concurrent, sharded key-value store that all primitives share.
 
 ## ShardedStore
@@ -49,7 +47,7 @@ Values in the store are wrapped in `StoredValue`, which includes:
 
 ## MVCC (Multi-Version Concurrency Control)
 
-StrataDB supports versioned reads via `getv()` / `readv()` operations. The storage layer retains version history for keys, allowing you to read the value at a specific version.
+StrataDB supports versioned reads via `getv()` / `getv()` operations. The storage layer retains version history for keys, allowing you to read the value at a specific version.
 
 Version history is subject to the retention policy — old versions may be trimmed.
 

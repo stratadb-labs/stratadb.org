@@ -3,8 +3,6 @@ title: "Error Handling Guide"
 sidebar_position: 12
 ---
 
-# Error Handling Guide
-
 All StrataDB operations return `Result<T, Error>`. The `Error` enum has structured variants so you can match on specific error conditions.
 
 ## Using the ? Operator
@@ -150,5 +148,5 @@ match db.create_branch("session-001") {
 
 ## Next
 
-- [Error Reference](../reference/error-reference) — complete error specification
-- [Sessions and Transactions](sessions-and-transactions) — transaction patterns
+- [Error Reference](../reference/error-reference.md) — complete error specification
+- [Sessions and Transactions](sessions-and-transactions.md) — transaction patterns

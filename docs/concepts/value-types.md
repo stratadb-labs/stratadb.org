@@ -3,8 +3,6 @@ title: "Value Types"
 sidebar_position: 3
 ---
 
-# Value Types
-
 All data in StrataDB is represented by the `Value` enum — a closed set of 8 variants. There are no extensions and no implicit coercions.
 
 ## The 8 Variants
@@ -147,5 +145,5 @@ db.event_append("tool_call", payload)?;
 
 ## Next
 
-- [Transactions](transactions) — how concurrent access works
-- [Value Type Reference](../reference/value-type-reference) — complete specification
+- [Transactions](transactions.md) — how concurrent access works
+- [Value Type Reference](../reference/value-type-reference.md) — complete specification

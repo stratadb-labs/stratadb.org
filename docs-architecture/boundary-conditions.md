@@ -3,8 +3,6 @@ title: "Boundary Condition Tests"
 sidebar_position: 3
 ---
 
-# Boundary Condition Tests
-
 Systematic edge case analysis at every layer.
 
 ## 1. Key Validation Boundaries

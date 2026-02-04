@@ -3,9 +3,7 @@ title: "Sessions and Transactions Guide"
 sidebar_position: 10
 ---
 
-# Sessions and Transactions Guide
-
-This guide covers the `Session` API for multi-operation atomic transactions. For the conceptual overview, see [Concepts: Transactions](../concepts/transactions).
+This guide covers the `Session` API for multi-operation atomic transactions. For the conceptual overview, see [Concepts: Transactions](../concepts/transactions.md).
 
 ## Sessions
 
@@ -101,8 +99,8 @@ These commands route through the transaction when one is active:
 | Primitive | Commands |
 |-----------|----------|
 | **KV** | KvGet, KvPut, KvDelete, KvList |
-| **Event** | EventAppend, EventRead, EventLen |
-| **State** | StateRead, StateInit, StateCas |
+| **Event** | EventAppend, EventGet, EventLen |
+| **State** | StateGet, StateInit, StateCas |
 | **JSON** | JsonSet, JsonGet, JsonDelete |
 
 ### Non-Transactional Commands
@@ -209,5 +207,5 @@ loop {
 
 ## Next
 
-- [Search](search) — hybrid keyword + semantic search
-- [Error Handling](error-handling) — error categories and patterns
+- [Search](search.md) — hybrid keyword + semantic search
+- [Error Handling](error-handling.md) — error categories and patterns

@@ -3,8 +3,6 @@ title: "Error Propagation Trace"
 sidebar_position: 11
 ---
 
-# Error Propagation Trace
-
 ## 1. Error Type Inventory
 
 | Crate | Type | Variants | Role |
@@ -116,10 +114,10 @@ PATH B: Session (transactional)
 
 | CommitError variant | Maps to | Impact |
 |--------------------|---------|--------|
-| ValidationFailed(result) | TransactionAborted \{ reason: result.to_string() \} | **Conflict details (keys, paths) lost** |
-| InvalidState(msg) | TransactionNotActive \{ state: msg \} | Preserved |
-| WALError(msg) | Storage \{ message: msg \} | **Error type lost** — WAL failure becomes generic storage |
-| StorageError(msg) | Storage \{ message: msg \} | Preserved |
+| `ValidationFailed(result)` | `TransactionAborted { reason: result.to_string() }` | **Conflict details (keys, paths) lost** |
+| `InvalidState(msg)` | `TransactionNotActive { state: msg }` | Preserved |
+| `WALError(msg)` | `Storage { message: msg }` | **Error type lost** — WAL failure becomes generic storage |
+| `StorageError(msg)` | `Storage { message: msg }` | Preserved |
 
 ## 4. Error Swallowing Inventory
 

@@ -4,8 +4,6 @@ sidebar_label: "Installation"
 sidebar_position: 2
 ---
 
-# Installation
-
 ## Requirements
 
 - **Rust 1.70** or later
@@ -81,9 +79,9 @@ Run it:
 cargo run
 ```
 
-If you see "StrataDB is working!", you are ready to go. Continue to [Your First Database](first-database) for a complete tutorial.
+If you see "StrataDB is working!", you are ready to go. Continue to [Your First Database](first-database.md) for a complete tutorial.
 
 ## Next
 
-- [Your First Database](first-database) — hands-on tutorial
-- [Concepts](../concepts/) — understand the mental model
+- [Your First Database](first-database.md) — hands-on tutorial
+- [Concepts](../concepts/index.md) — understand the mental model

@@ -3,8 +3,6 @@ title: "Value Type Reference"
 sidebar_position: 6
 ---
 
-# Value Type Reference
-
 Complete specification of the `Value` enum and its conversions.
 
 ## Variants

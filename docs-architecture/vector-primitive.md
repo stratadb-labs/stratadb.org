@@ -3,8 +3,6 @@ title: "Vector Primitive - Architecture Reference"
 sidebar_position: 19
 ---
 
-# Vector Primitive - Architecture Reference
-
 ## Overview
 
 The Vector primitive provides semantic search over embedding vectors organized into named collections. Each collection has a fixed dimension and distance metric. Vectors are stored in both a persistent KV layer (for durability and metadata) and an in-memory index backend (for search performance).

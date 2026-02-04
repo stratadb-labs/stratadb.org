@@ -3,8 +3,6 @@ title: "Vector Store Guide"
 sidebar_position: 6
 ---
 
-# Vector Store Guide
-
 The Vector Store holds embedding vectors in named collections and supports similarity search. Use it for RAG context, agent memory, and any workflow that involves finding similar items.
 
 ## API Overview
@@ -268,7 +266,7 @@ let collections = db.vector_list_collections()?;
 assert!(collections.is_empty()); // separate collections per space
 ```
 
-See [Spaces](spaces) for the full guide.
+See [Spaces](spaces.md) for the full guide.
 
 ## Transactions
 
@@ -276,5 +274,5 @@ Vector operations **do not** participate in transactions. They are executed imme
 
 ## Next
 
-- [Branch Management](branch-management) — creating and managing branches
-- [Cookbook: RAG with Vectors](../cookbook/rag-with-vectors) — full RAG pattern
+- [Branch Management](branch-management.md) — creating and managing branches
+- [Cookbook: RAG with Vectors](../cookbook/rag-with-vectors.md) — full RAG pattern

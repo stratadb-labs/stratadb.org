@@ -3,8 +3,6 @@ title: "JSON Primitive - Architecture Reference"
 sidebar_position: 13
 ---
 
-# JSON Primitive - Architecture Reference
-
 ## Overview
 
 The JSON primitive provides document storage with JSONPath-based read and write operations. Each document is a named JSON value that can be queried and mutated at arbitrary paths. Documents are stored as MessagePack-encoded `JsonDoc` structs with per-document version counters.

@@ -3,8 +3,6 @@ title: "Crate Structure"
 sidebar_position: 8
 ---
 
-# Crate Structure
-
 StrataDB is a Rust workspace with 8 member crates. Dependencies flow downward — higher-level crates depend on lower-level ones.
 
 ## Dependency Graph

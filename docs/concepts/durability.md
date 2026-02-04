@@ -3,8 +3,6 @@ title: "Durability"
 sidebar_position: 7
 ---
 
-# Durability
-
 StrataDB offers three durability modes that trade off between speed and crash safety. You choose the mode when opening the database.
 
 ## The Three Modes
@@ -95,5 +93,5 @@ For most applications, **Buffered** is the right choice. It provides a good bala
 
 ## Next
 
-- [Database Configuration Guide](../guides/database-configuration) — how to configure durability modes
+- [Database Configuration Guide](../guides/database-configuration.md) — how to configure durability modes
 - [Architecture: Durability and Recovery](/architecture/durability-and-recovery) — deep dive into WAL format, snapshots, and recovery internals

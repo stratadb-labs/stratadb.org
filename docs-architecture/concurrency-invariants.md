@@ -3,8 +3,6 @@ title: "Concurrency Invariant Verification"
 sidebar_position: 5
 ---
 
-# Concurrency Invariant Verification
-
 ## 1. Shared Mutable State Inventory
 
 **21 pieces of shared mutable state across 5 crates. Zero unsafe code in production paths.**

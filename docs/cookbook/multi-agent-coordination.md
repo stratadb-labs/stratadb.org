@@ -3,8 +3,6 @@ title: "Multi-Agent Coordination"
 sidebar_position: 3
 ---
 
-# Multi-Agent Coordination
-
 This recipe shows how multiple agents can coordinate through a shared StrataDB database using State Cells for CAS-based coordination and branches for isolation.
 
 ## Pattern 1: Shared Database, Same Branch (CAS Coordination)
@@ -17,7 +15,7 @@ use stratadb::{Strata, Value};
 fn agent_worker(db: &Strata, agent_id: &str) -> stratadb::Result<()> {
     // Try to claim the next task using CAS
     loop {
-        let current = db.state_read("task:next")?;
+        let current = db.state_get("task:next")?;
         let task_id = match current {
             Some(v) => v.as_int().unwrap_or(0),
             None => {
@@ -104,7 +102,7 @@ fn try_become_leader(db: &Strata, agent_id: &str) -> stratadb::Result<bool> {
             Ok(true)
         }
         None => {
-            let current = db.state_read("leader")?;
+            let current = db.state_get("leader")?;
             println!("{} is not the leader (current: {:?})", agent_id, current);
             Ok(false)
         }
@@ -114,6 +112,6 @@ fn try_become_leader(db: &Strata, agent_id: &str) -> stratadb::Result<bool> {
 
 ## See Also
 
-- [State Cell Guide](../guides/state-cell) — CAS semantics
-- [Branch Management Guide](../guides/branch-management) — creating and switching branches
-- [Transactions Guide](../guides/sessions-and-transactions) — atomic multi-key operations
+- [State Cell Guide](../guides/state-cell.md) — CAS semantics
+- [Branch Management Guide](../guides/branch-management.md) — creating and switching branches
+- [Transactions Guide](../guides/sessions-and-transactions.md) — atomic multi-key operations

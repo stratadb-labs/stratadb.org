@@ -3,8 +3,6 @@ title: "Database Configuration Guide"
 sidebar_position: 14
 ---
 
-# Database Configuration Guide
-
 This guide covers the different ways to open a StrataDB database and configure its behavior.
 
 ## Opening Methods
@@ -81,6 +79,6 @@ handle.join().unwrap();
 
 ## Next
 
-- [Branch Bundles](branch-bundles) — exporting and importing branches
-- [Error Handling](error-handling) — error categories
-- [Configuration Reference](../reference/configuration-reference) — all options
+- [Branch Bundles](branch-bundles.md) — exporting and importing branches
+- [Error Handling](error-handling.md) — error categories
+- [Configuration Reference](../reference/configuration-reference.md) — all options

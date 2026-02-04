@@ -4,8 +4,6 @@ sidebar_label: "Overview"
 sidebar_position: 1
 ---
 
-# Architecture Overview
-
 StrataDB is a layered embedded database built as a Rust workspace of 7 crates. This section describes the system from the top down.
 
 ## High-Level Diagram
@@ -79,7 +77,7 @@ The `Strata` struct is a thin wrapper around an `Executor`. Primitives don't hol
 
 ## Deep Dives
 
-- [Crate Structure](crate-structure) — the 7 crates and their responsibilities
-- [Storage Engine](storage-engine) — ShardedStore, MVCC, key structure
-- [Durability and Recovery](durability-and-recovery) — WAL, snapshots, recovery flow
-- [Concurrency Model](concurrency-model) — OCC lifecycle, conflict detection
+- [Crate Structure](crate-structure.md) — the 7 crates and their responsibilities
+- [Storage Engine](storage-engine.md) — ShardedStore, MVCC, key structure
+- [Durability and Recovery](durability-and-recovery.md) — WAL, snapshots, recovery flow
+- [Concurrency Model](concurrency-model.md) — OCC lifecycle, conflict detection

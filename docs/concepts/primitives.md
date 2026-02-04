@@ -3,20 +3,18 @@ title: "Primitives"
 sidebar_position: 2
 ---
 
-# Primitives
-
 StrataDB provides **six data primitives** — purpose-built data structures that cover the state management needs of AI agents. Each primitive has a specific shape and API, rather than forcing everything into a generic key-value model.
 
 ## The Six Primitives
 
 | Primitive | Shape | Best For |
 |-----------|-------|----------|
-| **[KV Store](../guides/kv-store)** | Key → Value | Working memory, config, scratchpads |
-| **[Event Log](../guides/event-log)** | Append-only sequence of typed events | Audit trails, tool call history, decision logs |
-| **[State Cell](../guides/state-cell)** | Named cell with CAS | Coordination, counters, locks, state machines |
-| **[JSON Store](../guides/json-store)** | Key → JSON document with path access | Structured config, conversation history |
-| **[Vector Store](../guides/vector-store)** | Collection of keyed embeddings with pluggable indexing (brute-force or HNSW) | Similarity search, RAG context, agent memory |
-| **[Branch](../guides/branch-management)** | Named isolated namespace | Session isolation, experiments, multi-tenancy |
+| **[KV Store](../guides/kv-store.md)** | Key → Value | Working memory, config, scratchpads |
+| **[Event Log](../guides/event-log.md)** | Append-only sequence of typed events | Audit trails, tool call history, decision logs |
+| **[State Cell](../guides/state-cell.md)** | Named cell with CAS | Coordination, counters, locks, state machines |
+| **[JSON Store](../guides/json-store.md)** | Key → JSON document with path access | Structured config, conversation history |
+| **[Vector Store](../guides/vector-store.md)** | Collection of keyed embeddings with pluggable indexing (brute-force or HNSW) | Similarity search, RAG context, agent memory |
+| **[Branch](../guides/branch-management.md)** | Named isolated namespace | Session isolation, experiments, multi-tenancy |
 
 ## Choosing the Right Primitive
 
@@ -48,7 +46,7 @@ StrataDB provides **six data primitives** — purpose-built data structures that
 
 ## All Primitives Are Branch-Scoped
 
-Every primitive is isolated by the current branch. Data written in one branch is invisible from another. See [Branches](branches) for details.
+Every primitive is isolated by the current branch. Data written in one branch is invisible from another. See [Branches](branches.md) for details.
 
 ### Space Organization Within Branches
 
@@ -65,13 +63,13 @@ db.set_space("experiments")?;
 assert!(db.kv_get("key")?.is_none()); // not visible in this space
 ```
 
-Spaces are organizational, not isolation boundaries. Transactions can span multiple spaces within the same branch. See [Spaces](../guides/spaces) for the full guide.
+Spaces are organizational, not isolation boundaries. Transactions can span multiple spaces within the same branch. See [Spaces](../guides/spaces.md) for the full guide.
 
 ## All Primitives Use Value
 
-Every primitive stores data as [`Value`](value-types) — StrataDB's 8-variant type system. You pass Rust types directly (strings, integers, bools) and they convert automatically via `Into<Value>`.
+Every primitive stores data as [`Value`](value-types.md) — StrataDB's 8-variant type system. You pass Rust types directly (strings, integers, bools) and they convert automatically via `Into<Value>`.
 
 ## Next
 
-- [Value Types](value-types) — the 8-variant type system
-- [Guides](../guides/) — per-primitive API walkthroughs
+- [Value Types](value-types.md) — the 8-variant type system
+- [Guides](../guides/index.md) — per-primitive API walkthroughs

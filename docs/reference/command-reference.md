@@ -3,8 +3,6 @@ title: "Command Reference"
 sidebar_position: 3
 ---
 
-# Command Reference
-
 The `Command` enum is the instruction set of StrataDB. Every operation that can be performed on the database is represented as a variant. Commands are self-contained, serializable, and typed.
 
 This reference is primarily for SDK builders and contributors. Most users should use the typed `Strata` API instead.
@@ -51,8 +49,8 @@ This reference is primarily for SDK builders and contributors. Most users should
 | Command | Fields | Output |
 |---------|--------|--------|
 | `EventAppend` | `branch?`, `space?`, `event_type`, `payload` | `Version(u64)` |
-| `EventRead` | `branch?`, `space?`, `sequence` | `MaybeVersioned(Option<VersionedValue>)` |
-| `EventReadByType` | `branch?`, `space?`, `event_type` | `VersionedValues(Vec<VersionedValue>)` |
+| `EventGet` | `branch?`, `space?`, `sequence` | `MaybeVersioned(Option<VersionedValue>)` |
+| `EventGetByType` | `branch?`, `space?`, `event_type` | `VersionedValues(Vec<VersionedValue>)` |
 | `EventLen` | `branch?`, `space?` | `Uint(count)` |
 
 ## State Commands
@@ -60,10 +58,10 @@ This reference is primarily for SDK builders and contributors. Most users should
 | Command | Fields | Output |
 |---------|--------|--------|
 | `StateSet` | `branch?`, `space?`, `cell`, `value` | `Version(u64)` |
-| `StateRead` | `branch?`, `space?`, `cell` | `Maybe(Option<Value>)` |
+| `StateGet` | `branch?`, `space?`, `cell` | `Maybe(Option<Value>)` |
 | `StateCas` | `branch?`, `space?`, `cell`, `expected_counter?`, `value` | `MaybeVersion(Option<u64>)` |
 | `StateInit` | `branch?`, `space?`, `cell`, `value` | `Version(u64)` |
-| `StateReadv` | `branch?`, `space?`, `cell` | `VersionHistory(Option<Vec<VersionedValue>>)` |
+| `StateGetv` | `branch?`, `space?`, `cell` | `VersionHistory(Option<Vec<VersionedValue>>)` |
 
 ## Vector Commands
 

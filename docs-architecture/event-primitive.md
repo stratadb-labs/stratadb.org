@@ -3,8 +3,6 @@ title: "Event Primitive - Architecture Reference"
 sidebar_position: 12
 ---
 
-# Event Primitive - Architecture Reference
-
 ## Overview
 
 The Event primitive provides an append-only log with hash-chained integrity. Events are ordered by sequence number within a branch, grouped by event type, and linked via SHA-256 hashes for tamper detection.
@@ -166,12 +164,12 @@ SHA256(
 
 ---
 
-### EventRead
+### EventGet
 
 ```
 Client               Handler             Engine (EventLog)    Transaction          Storage
   |                    |                   |                    |                   |
-  |-- EventRead ------>|                   |                    |                   |
+  |-- EventGet ------>|                   |                    |                   |
   | {branch, sequence} |                   |                    |                   |
   |                    |                   |                    |                   |
   |                    |-- branch->UUID -->|                    |                   |
@@ -205,7 +203,7 @@ Client               Handler             Engine (EventLog)    Transaction       
 
 **Steps:**
 
-1. **Handler**: Converts branch. Calls `primitives.event.read(&branch_id, sequence)`. Maps the returned `Versioned<Event>` to `VersionedValue { value: event.payload, version: sequence, timestamp }`.
+1. **Handler**: Converts branch. Calls `primitives.event.get(&branch_id, sequence)`. Maps the returned `Versioned<Event>` to `VersionedValue { value: event.payload, version: sequence, timestamp }`.
 2. **Engine (EventLog)**: Constructs `Key::new_event(ns, sequence)` (sequence as big-endian 8 bytes). Opens transaction. Calls `txn.get()`. Deserializes the JSON string back to `Event` struct. Wraps in `Versioned::with_timestamp(event, Version::Sequence(seq), Timestamp)`.
 3. **Transaction/Storage**: Standard read path through write set -> delete set -> snapshot.
 
@@ -213,7 +211,7 @@ Client               Handler             Engine (EventLog)    Transaction       
 
 ---
 
-### EventReadByType
+### EventGetByType
 
 ```
 Client               Handler             Engine (EventLog)    Transaction          Storage
@@ -250,7 +248,7 @@ Client               Handler             Engine (EventLog)    Transaction       
 
 **Steps:**
 
-1. **Handler**: Converts branch. Calls `primitives.event.read_by_type()`. Maps each `Versioned<Event>` to `VersionedValue { value: event.payload, version: sequence, timestamp }`.
+1. **Handler**: Converts branch. Calls `primitives.event.get_by_type()`. Maps each `Versioned<Event>` to `VersionedValue { value: event.payload, version: sequence, timestamp }`.
 2. **Engine (EventLog)**: Opens transaction. Reads `EventLogMeta` to get `next_sequence` (total event count). Iterates through ALL events from sequence 0 to N-1. For each event, deserializes and checks if `event.event_type == target_type`. Collects matching events.
 3. **Performance note**: This is an O(N) scan over all events in the branch. The `EventLogMeta.streams` map tracks per-type metadata but is not currently used to optimize the scan.
 
@@ -348,7 +346,7 @@ StreamMeta {
 - Event uses `Version::Sequence(u64)` unlike KV's `Version::Txn(u64)` - the sequence number is application-meaningful (position in log), not a global transaction ID
 - Events are the only primitive with **hash chaining** - provides tamper-evidence for the append-only log
 - Events are the only primitive with **aggressive retry** (200 attempts) - necessary because all appends contend on the shared `__meta__` key
-- `EventReadByType` does a full O(N) scan despite `StreamMeta` tracking per-type ranges - optimization opportunity
+- `EventGetByType` does a full O(N) scan despite `StreamMeta` tracking per-type ranges - optimization opportunity
 - The `payload` must be `Value::Object` (validated in engine), unlike KV which accepts any `Value` type
 - Events are immutable once written - there is no update or delete for individual events
 - The Session transaction path for `EventAppend` uses a `Transaction` wrapper which has its own hash computation, using the canonical `compute_event_hash()` function from `primitives/event.rs`

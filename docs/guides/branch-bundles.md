@@ -3,8 +3,6 @@ title: "Branch Bundles Guide"
 sidebar_position: 15
 ---
 
-# Branch Bundles Guide
-
 Branch bundles let you export a branch as a portable archive file (`.branchbundle.tar.zst`) and import it into another database instance.
 
 ## Use Cases
@@ -93,5 +91,5 @@ Per entry:
 
 ## Next
 
-- [Error Handling](error-handling) — error categories and patterns
-- [Branch Management](branch-management) — creating and managing branches
+- [Error Handling](error-handling.md) — error categories and patterns
+- [Branch Management](branch-management.md) — creating and managing branches

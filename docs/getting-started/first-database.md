@@ -4,13 +4,11 @@ sidebar_label: "First Database"
 sidebar_position: 3
 ---
 
-# Your First Database
-
 This tutorial walks through all six StrataDB primitives. Every code block is a complete, runnable example using `Strata::cache()` so you can follow along without disk setup.
 
 ## Prerequisites
 
-- [StrataDB installed](installation)
+- [StrataDB installed](installation.md)
 - `serde_json` in your dependencies (for JSON examples)
 
 ## Step 1: Open a Database
@@ -82,11 +80,11 @@ fn main() -> stratadb::Result<()> {
     println!("Event written at sequence: {}", seq);
 
     // Read a specific event by sequence number
-    let event = db.event_read(seq)?;
+    let event = db.event_get(seq)?;
     assert!(event.is_some());
 
     // Read all events of a type
-    let tool_calls = db.event_read_by_type("tool_call")?;
+    let tool_calls = db.event_get_by_type("tool_call")?;
     assert_eq!(tool_calls.len(), 1);
 
     // Count total events
@@ -109,7 +107,7 @@ fn main() -> stratadb::Result<()> {
     // Initialize only if absent (idempotent)
     db.state_init("status", "idle")?;
     db.state_init("status", "should-not-overwrite")?;
-    assert_eq!(db.state_read("status")?, Some(Value::String("idle".into())));
+    assert_eq!(db.state_get("status")?, Some(Value::String("idle".into())));
 
     // Unconditional set
     db.state_set("counter", 0i64)?;
@@ -285,7 +283,7 @@ fn main() -> stratadb::Result<()> {
 
     // Review the session
     println!("Events recorded: {}", db.event_len()?);
-    println!("Status: {:?}", db.state_read("status")?);
+    println!("Status: {:?}", db.state_get("status")?);
 
     Ok(())
 }
@@ -293,6 +291,6 @@ fn main() -> stratadb::Result<()> {
 
 ## Next Steps
 
-- [Concepts](../concepts/) — understand branches, value types, and transactions
-- [Guides](../guides/) — deep dives into each primitive
-- [Cookbook](../cookbook/) — real-world patterns
+- [Concepts](../concepts/index.md) — understand branches, value types, and transactions
+- [Guides](../guides/index.md) — deep dives into each primitive
+- [Cookbook](../cookbook/index.md) — real-world patterns

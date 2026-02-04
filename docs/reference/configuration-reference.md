@@ -3,8 +3,6 @@ title: "Configuration Reference"
 sidebar_position: 4
 ---
 
-# Configuration Reference
-
 ## Config File: `strata.toml`
 
 StrataDB uses a config file in the data directory. On first `Strata::open()`, a default `strata.toml` is created automatically. To change settings, edit the file and restart.
@@ -85,8 +83,8 @@ The `DatabaseInfo` struct returned by `db.info()`:
 |-----------|-----------|-------------|
 | Equal | `FilterOp::Eq` | Field equals value |
 | Not Equal | `FilterOp::Ne` | Field does not equal value |
-| Greater Than | `FilterOp::Gt` | Field &gt; value |
-| Greater or Equal | `FilterOp::Gte` | Field &gt;= value |
+| Greater Than | `FilterOp::Gt` | Field > value |
+| Greater or Equal | `FilterOp::Gte` | Field >= value |
 | Less Than | `FilterOp::Lt` | Field &lt; value |
 | Less or Equal | `FilterOp::Lte` | Field &lt;= value |
 | In | `FilterOp::In` | Field is in set |

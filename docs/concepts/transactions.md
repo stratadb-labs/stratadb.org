@@ -3,8 +3,6 @@ title: "Transactions"
 sidebar_position: 6
 ---
 
-# Transactions
-
 StrataDB uses **Optimistic Concurrency Control (OCC)** with snapshot isolation. Transactions read from a consistent snapshot and validate at commit time — no locks are held during execution.
 
 ## How OCC Works
@@ -138,5 +136,5 @@ If a `Session` is dropped while a transaction is active, the transaction is auto
 
 ## Next
 
-- [Durability](durability) — how data is persisted
-- [Sessions and Transactions Guide](../guides/sessions-and-transactions) — full API walkthrough
+- [Durability](durability.md) — how data is persisted
+- [Sessions and Transactions Guide](../guides/sessions-and-transactions.md) — full API walkthrough

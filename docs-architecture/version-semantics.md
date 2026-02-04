@@ -3,8 +3,6 @@ title: "Version Semantics Correctness"
 sidebar_position: 20
 ---
 
-# Version Semantics Correctness
-
 ## 1. Version Type System
 
 ```
@@ -23,7 +21,7 @@ sidebar_position: 20
 |--------|----------|
 | `as_u64()` | Returns raw u64 — **strips variant tag** |
 | `PartialEq` / `Eq` | Full enum comparison — `Counter(5) != Txn(5)` |
-| `Ord` | Discriminant first (Txn &lt; Sequence &lt; Counter), then value |
+| `Ord` | Discriminant first (Txn < Sequence < Counter), then value |
 | `increment()` | Preserves variant — `Counter(5).increment() → Counter(6)` |
 | `From<u64>` | Creates `Version::Txn(v)` — defaults to Txn |
 
@@ -153,7 +151,7 @@ A KV key `"foo"` and a State cell `"foo"` are different keys in storage (`(branc
 | Command | Client sends | Executor wraps as |
 |---------|-------------|-------------------|
 | StateCas | `expected_counter: Option<u64>` | `Version::Counter(v)` |
-| EventRead | `sequence: u64` | Raw u64 (sequence number, not Version) |
+| EventGet | `sequence: u64` | Raw u64 (sequence number, not Version) |
 | KvPut | N/A (no expected version) | N/A |
 
 The executor layer knows which variant each command uses and reconstructs correctly. A client cannot cause a variant mismatch because the wrapping is hardcoded.
@@ -178,7 +176,7 @@ The same `record.version` (a raw `u64`) is wrapped as `Version::counter()` on in
 - The Version variant carries semantic meaning — Counter means "per-entity mutation count" while Txn means "transaction commit version"
 - This inconsistency could cause confusion in any future code that inspects the variant
 
-### Problem 2: EventReadByType silently returns version 0 for non-Sequence variants
+### Problem 2: EventGetByType silently returns version 0 for non-Sequence variants
 
 **Severity**: Low
 
@@ -238,7 +236,7 @@ The MVCC version and the primitive-specific version are stored at different leve
 | # | Finding | Severity | Type |
 |---|---------|----------|------|
 | 1 | VectorStore insert returns Counter, get returns Txn for same version | Medium | Bug — inconsistent variant |
-| 2 | EventReadByType silently returns version 0 for non-Sequence variants | Low | Defensive coding gap |
+| 2 | EventGetByType silently returns version 0 for non-Sequence variants | Low | Defensive coding gap |
 | 3 | Client loses version type information (existing #930) | Low | Context loss |
 | 4 | Storage version type invariant protected only by debug_assert | Low | Design — not type-enforced |
 

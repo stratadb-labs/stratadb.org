@@ -3,8 +3,6 @@ title: "Troubleshooting"
 sidebar_position: 100
 ---
 
-# Troubleshooting
-
 Common issues and their solutions.
 
 ## Data Not Visible After Writing
@@ -19,7 +17,7 @@ Common issues and their solutions.
 println!("Current branch: {}", db.current_branch());
 ```
 
-All data in StrataDB is branch-scoped. Data written in one branch is invisible from another. See [Branches](concepts/branches).
+All data in StrataDB is branch-scoped. Data written in one branch is invisible from another. See [Branches](concepts/branches.md).
 
 ## TransactionConflict Error
 
@@ -41,7 +39,7 @@ loop {
 }
 ```
 
-See [Transactions](concepts/transactions).
+See [Transactions](concepts/transactions.md).
 
 ## DimensionMismatch Error
 
@@ -137,15 +135,15 @@ Remember: collections are branch-scoped. Creating a collection in one branch doe
 
 ## NotImplemented Error
 
-**Symptom:** `Error::NotImplemented` for `fork_branch` or `diff_branches`.
+**Symptom:** `Error::NotImplemented` for a specific feature.
 
-**Cause:** These features are planned but not yet available.
+**Cause:** The feature is recognized but not yet available in this version.
 
-**Workaround:** For forking, create a new branch and manually copy the data you need. For diffing, read from both branches and compare in your application code.
+**Note:** Branch fork, diff, and merge are now implemented. See the [Branch Management Guide](guides/branch-management.md) for usage.
 
 ## Getting Help
 
 If your issue isn't listed here:
-- Check the [FAQ](faq)
-- Check the [Error Reference](reference/error-reference) for your specific error variant
+- Check the [FAQ](faq.md)
+- Check the [Error Reference](reference/error-reference.md) for your specific error variant
 - File an issue at [GitHub Issues](https://github.com/anibjoshi/strata/issues)

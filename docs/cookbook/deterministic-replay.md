@@ -3,8 +3,6 @@ title: "Deterministic Replay"
 sidebar_position: 5
 ---
 
-# Deterministic Replay
-
 This recipe shows how to record nondeterministic inputs (API responses, timestamps, random values) into the Event Log so you can replay an agent session deterministically.
 
 ## Pattern
@@ -74,7 +72,7 @@ fn replay_session(db: &mut Strata, session_id: &str) -> stratadb::Result<()> {
     db.set_branch(session_id)?;
 
     // Read all external inputs in order
-    let inputs = db.event_read_by_type("external_input")?;
+    let inputs = db.event_get_by_type("external_input")?;
 
     for (i, input) in inputs.iter().enumerate() {
         println!("Input {}: {:?}", i, input.value);
@@ -110,7 +108,7 @@ impl<'a> InputRecorder<'a> {
 
     /// Create a recorder for replay (reads from event log)
     fn replay(db: &'a Strata) -> stratadb::Result<Self> {
-        let inputs = db.event_read_by_type("external_input")?;
+        let inputs = db.event_get_by_type("external_input")?;
         let values: Vec<Value> = inputs.into_iter().map(|v| v.value).collect();
         Ok(Self { db, replay_inputs: Some(values), replay_index: 0 })
     }
@@ -137,6 +135,6 @@ impl<'a> InputRecorder<'a> {
 
 ## See Also
 
-- [Event Log Guide](../guides/event-log) — event append and read operations
-- [Branch Management Guide](../guides/branch-management) — branch-per-session pattern
-- [Agent State Management](agent-state-management) — full session pattern
+- [Event Log Guide](../guides/event-log.md) — event append and read operations
+- [Branch Management Guide](../guides/branch-management.md) — branch-per-session pattern
+- [Agent State Management](agent-state-management.md) — full session pattern

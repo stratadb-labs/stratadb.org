@@ -3,8 +3,6 @@ title: "Spaces Guide"
 sidebar_position: 9
 ---
 
-# Spaces Guide
-
 Spaces are an organizational layer within branches. Each branch contains one or more spaces, and each space has its own independent instance of every primitive (KV, Event, State, JSON, Vector). Think of spaces like schemas in PostgreSQL — they organize data within a database (branch) without creating full isolation boundaries.
 
 ## API Overview
@@ -46,7 +44,7 @@ db.kv_put("msg_001", "hello")?;     // creates "conversations" space
 
 // Switch to another space
 db.set_space("tool-results")?;
-db.kv_put("experiment-42", "done")?;       // creates "tool-results" space
+db.kv_put("task_42", "done")?;       // creates "tool-results" space
 
 // List all spaces
 let spaces = db.list_spaces()?;
@@ -160,7 +158,7 @@ std::thread::spawn(move || {
 
 std::thread::spawn(move || {
     handle_b.set_space("tool-results").unwrap();
-    handle_b.kv_put("experiment-42", "done").unwrap();
+    handle_b.kv_put("task_42", "done").unwrap();
 });
 // No interference — each handle has its own active space.
 ```
@@ -181,7 +179,7 @@ db.event_append("tool_call", serde_json::json!({"tool": "weather_api"}).into())?
 
 // Tool results
 db.set_space("tool-results")?;
-db.kv_put("weather_api:result_1", serde_json::json!({"temp": 72, "conditions": "sunny"}))?;
+db.kv_put("weather_api:call_1", serde_json::json!({"temp": 72, "conditions": "sunny"}))?;
 
 // User preferences
 db.set_space("user-context")?;
@@ -213,10 +211,10 @@ db.set_space("hyperparams")?;
 db.kv_put("config", serde_json::json!({"lr": 0.001, "epochs": 10}))?;
 
 // Results per experiment
-db.set_space("test-001")?;
+db.set_space("experiment-001")?;
 db.kv_put("metrics", serde_json::json!({"loss": 0.42, "accuracy": 0.87}))?;
 
-db.set_space("test-002")?;
+db.set_space("experiment-002")?;
 db.kv_put("metrics", serde_json::json!({"loss": 0.38, "accuracy": 0.89}))?;
 ```
 
@@ -234,6 +232,6 @@ Use branches when you need full data isolation. Use spaces when you need to orga
 
 ## Next
 
-- [KV Store](kv-store) — key-value operations
-- [Branch Management](branch-management) — branch isolation
-- [Sessions and Transactions](sessions-and-transactions) — cross-space atomicity
+- [KV Store](kv-store.md) — key-value operations
+- [Branch Management](branch-management.md) — branch isolation
+- [Sessions and Transactions](sessions-and-transactions.md) — cross-space atomicity

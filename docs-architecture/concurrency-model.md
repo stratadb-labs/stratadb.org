@@ -3,8 +3,6 @@ title: "Concurrency Model"
 sidebar_position: 6
 ---
 
-# Concurrency Model
-
 StrataDB uses Optimistic Concurrency Control (OCC) with snapshot isolation. This document describes the implementation.
 
 ## OCC Lifecycle

@@ -3,8 +3,6 @@ title: "RAG with Vectors"
 sidebar_position: 4
 ---
 
-# RAG with Vectors
-
 This recipe shows how to build a Retrieval-Augmented Generation (RAG) pattern using the Vector Store for embeddings and the KV Store for document text.
 
 ## Pattern
@@ -140,6 +138,6 @@ println!("Knowledge base: {} vectors, {} bytes, index: {}",
 
 ## See Also
 
-- [Vector Store Guide](../guides/vector-store) — full vector API
-- [KV Store Guide](../guides/kv-store) — key-value operations
-- [Search Guide](../guides/search) — hybrid keyword + semantic search
+- [Vector Store Guide](../guides/vector-store.md) — full vector API
+- [KV Store Guide](../guides/kv-store.md) — key-value operations
+- [Search Guide](../guides/search.md) — hybrid keyword + semantic search

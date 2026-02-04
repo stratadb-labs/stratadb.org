@@ -3,8 +3,6 @@ title: "Durability and Recovery"
 sidebar_position: 9
 ---
 
-# Durability and Recovery
-
 This document describes how StrataDB persists data and recovers from crashes.
 
 ## Write-Ahead Log (WAL)

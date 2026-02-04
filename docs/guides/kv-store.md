@@ -3,8 +3,6 @@ title: "KV Store Guide"
 sidebar_position: 2
 ---
 
-# KV Store Guide
-
 The KV Store is StrataDB's most general-purpose primitive. It maps string keys to arbitrary values with simple put/get/delete semantics.
 
 ## API Overview
@@ -117,7 +115,7 @@ let config_keys = db.kv_list(Some("config:"))?;
 
 ## Branch Isolation
 
-KV data is isolated by branch. See [Branches](../concepts/branches) for details.
+KV data is isolated by branch. See [Branches](../concepts/branches.md) for details.
 
 ```rust
 let mut db = Strata::cache()?;
@@ -148,7 +146,7 @@ db.set_space("default")?;
 assert_eq!(db.kv_get("config")?, Some(Value::String("default-value".into())));
 ```
 
-See [Spaces](spaces) for the full guide.
+See [Spaces](spaces.md) for the full guide.
 
 ## Transactions
 
@@ -162,9 +160,9 @@ session.execute(Command::TxnCommit)?;
 // Both writes are visible atomically
 ```
 
-See [Sessions and Transactions](sessions-and-transactions) for the full guide.
+See [Sessions and Transactions](sessions-and-transactions.md) for the full guide.
 
 ## Next
 
-- [Event Log](event-log) — append-only event streams
-- [API Quick Reference](../reference/api-quick-reference) — all methods at a glance
+- [Event Log](event-log.md) — append-only event streams
+- [API Quick Reference](../reference/api-quick-reference.md) — all methods at a glance

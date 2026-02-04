@@ -3,8 +3,6 @@ title: "JSON Store Guide"
 sidebar_position: 5
 ---
 
-# JSON Store Guide
-
 The JSON Store holds structured documents that you can read and write at specific JSON paths. Instead of replacing an entire document to change one field, you can update just `$.config.temperature`.
 
 ## API Overview
@@ -179,15 +177,15 @@ db.set_space("other")?;
 assert!(db.json_get("config", "$")?.is_none()); // separate documents per space
 ```
 
-See [Spaces](spaces) for the full guide.
+See [Spaces](spaces.md) for the full guide.
 
 ## Transactions
 
 JSON set, get, and delete operations participate in transactions. Path-level updates to different fields of the same document can be made by concurrent transactions — sibling paths don't conflict.
 
-See [Sessions and Transactions](sessions-and-transactions) for details.
+See [Sessions and Transactions](sessions-and-transactions.md) for details.
 
 ## Next
 
-- [Vector Store](vector-store) — embeddings and similarity search
-- [Value Types](../concepts/value-types) — the 8-variant type system
+- [Vector Store](vector-store.md) — embeddings and similarity search
+- [Value Types](../concepts/value-types.md) — the 8-variant type system
