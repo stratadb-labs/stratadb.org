@@ -33,7 +33,7 @@
           </div>
           <div class="text-lg text-text-muted uppercase tracking-wider mb-4">ops/second</div>
           <p class="text-sm text-text-secondary">
-            Single-threaded ephemeral mode. 800K+ with 4 threads.
+            Single-threaded Cache mode. 800K+ with 4 threads.
           </p>
         </div>
       </div>
@@ -89,33 +89,33 @@
               <td class="px-6 py-4">
                 <span class="inline-flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-amber-400" />
-                  <span class="font-mono text-text-primary">Ephemeral</span>
+                  <span class="font-mono text-text-primary">Cache</span>
                 </span>
               </td>
               <td class="px-6 py-4 text-text-secondary font-mono">250K+ ops/s</td>
               <td class="px-6 py-4 text-text-muted">None (memory only)</td>
-              <td class="px-6 py-4 text-text-secondary">Testing, caches, scratch</td>
+              <td class="px-6 py-4 text-text-secondary">Testing, caches, development</td>
             </tr>
             <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
               <td class="px-6 py-4">
                 <span class="inline-flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-terracotta" />
-                  <span class="font-mono text-text-primary">Buffered</span>
+                  <span class="font-mono text-text-primary">Standard</span>
                 </span>
               </td>
               <td class="px-6 py-4 text-text-secondary font-mono">50K+ ops/s</td>
-              <td class="px-6 py-4 text-text-muted">Async WAL + snapshots</td>
+              <td class="px-6 py-4 text-text-muted">Periodic fsync (batched)</td>
               <td class="px-6 py-4 text-text-secondary">Most production workloads</td>
             </tr>
             <tr class="hover:bg-white/[0.02] transition-colors">
               <td class="px-6 py-4">
                 <span class="inline-flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span class="font-mono text-text-primary">Strict</span>
+                  <span class="font-mono text-text-primary">Always</span>
                 </span>
               </td>
               <td class="px-6 py-4 text-text-secondary font-mono">~500 ops/s</td>
-              <td class="px-6 py-4 text-text-muted">Sync fsync per commit</td>
+              <td class="px-6 py-4 text-text-muted">fsync every commit</td>
               <td class="px-6 py-4 text-text-secondary">Critical data, zero loss</td>
             </tr>
           </tbody>
