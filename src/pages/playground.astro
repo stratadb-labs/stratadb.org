@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PythonRepl from '../components/playground/PythonRepl.tsx';
+---
+
+<BaseLayout title="Playground - StrataDB" description="Interactive StrataDB playground">
+  <div class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-text-primary mb-4">
+          Interactive Playground
+        </h1>
+        <p class="text-xl text-text-secondary mb-2">
+          Try StrataDB directly in your browser. No installation required.
+        </p>
+        <p class="text-sm text-text-muted">
+          This is a simulated Python REPL demonstrating the StrataDB API.
+        </p>
+      </div>
+
+      <!-- REPL -->
+      <PythonRepl client:load />
+
+      <!-- Examples -->
+      <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div class="bg-background-muted rounded-xl p-6 border border-border">
+          <h3 class="font-semibold text-text-primary mb-3">Try These Examples</h3>
+          <div class="space-y-2 text-sm font-mono text-text-secondary">
+            <div class="cursor-pointer hover:text-terracotta" onclick="navigator.clipboard.writeText(this.textContent)">
+              db.kv_put("name", "Alice")
+            </div>
+            <div class="cursor-pointer hover:text-terracotta" onclick="navigator.clipboard.writeText(this.textContent)">
+              db.kv_get("name")
+            </div>
+            <div class="cursor-pointer hover:text-terracotta" onclick="navigator.clipboard.writeText(this.textContent)">
+              db.branch_create("experiment")
+            </div>
+            <div class="cursor-pointer hover:text-terracotta" onclick="navigator.clipboard.writeText(this.textContent)">
+              db.branch_use("experiment")
+            </div>
+            <div class="cursor-pointer hover:text-terracotta" onclick="navigator.clipboard.writeText(this.textContent)">
+              db.state_set("counter", 0)
+            </div>
+            <div class="cursor-pointer hover:text-terracotta" onclick="navigator.clipboard.writeText(this.textContent)">
+              db.event_append("action", {"{"}type": "click"{"}"})
+            </div>
+          </div>
+          <p class="text-xs text-text-muted mt-3">Click to copy</p>
+        </div>
+
+        <div class="bg-background-muted rounded-xl p-6 border border-border">
+          <h3 class="font-semibold text-text-primary mb-3">Keyboard Shortcuts</h3>
+          <div class="space-y-2 text-sm text-text-secondary">
+            <div class="flex justify-between">
+              <span>Execute command</span>
+              <kbd class="px-2 py-1 bg-gray-800 rounded text-xs">Enter</kbd>
+            </div>
+            <div class="flex justify-between">
+              <span>Previous command</span>
+              <kbd class="px-2 py-1 bg-gray-800 rounded text-xs">↑</kbd>
+            </div>
+            <div class="flex justify-between">
+              <span>Next command</span>
+              <kbd class="px-2 py-1 bg-gray-800 rounded text-xs">↓</kbd>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-border">
+            <h4 class="font-medium text-text-primary mb-2">Available Primitives</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-terracotta/10 text-terracotta text-xs rounded">KV Store</span>
+              <span class="px-2 py-1 bg-terracotta/10 text-terracotta text-xs rounded">Branches</span>
+              <span class="px-2 py-1 bg-terracotta/10 text-terracotta text-xs rounded">State Cell</span>
+              <span class="px-2 py-1 bg-terracotta/10 text-terracotta text-xs rounded">Events</span>
+              <span class="px-2 py-1 bg-terracotta/10 text-terracotta text-xs rounded">Vectors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Install CTA -->
+      <div class="mt-12 p-6 bg-background-muted rounded-xl border border-border text-center">
+        <p class="text-text-secondary mb-4">
+          Ready to use StrataDB in your project?
+        </p>
+        <div class="flex justify-center gap-4">
+          <a href="/docs/getting-started" class="btn-primary text-sm">
+            Get Started
+          </a>
+          <a href="/docs/reference/python-sdk" class="btn-secondary text-sm">
+            Python SDK Docs
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
